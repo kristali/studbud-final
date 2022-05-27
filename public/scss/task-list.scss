@@ -1,0 +1,55 @@
+
+//----- DASHBOARD: MY TASKS LIST -----//
+.header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+  }
+    
+  .task-list {
+    grid-area: task-list;
+    padding-top: 0;
+    height: 25vh;
+    padding: .5rem 1rem;;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+
+  .header-details{
+    display: flex;
+    justify-content: space-between;
+    padding: .4rem;
+  }
+  
+  .content-details{
+    display: block;
+  }
+  .content-details span{
+    font-size: 12px;
+  }
+  
+  .bottom-details{
+    display: flex;
+    justify-content: space-between;
+    padding: .4rem;
+    border-top: 1px solid #ccc;
+  }
+  
+  .task-list li{
+    height: 100px;
+    margin: 20px;
+    list-style: none;
+    border-radius: 5px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+  
+  .task p{
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+

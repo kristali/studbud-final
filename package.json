@@ -2,9 +2,11 @@
   "name": "studbud-final",
   "version": "1.0.0",
   "description": "web application for studying",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "parcel build ./public/index.html",
+    "dev": "parcel serve ./public/index.html"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/kristali/studbud-final/issues"
   },
-  "homepage": "https://github.com/kristali/studbud-final#readme"
+  "homepage": "https://github.com/kristali/studbud-final#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
+    "parcel": "^2.6.0"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }

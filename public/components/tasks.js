@@ -1,0 +1,295 @@
+/*//////////////////////////////////////////////////////////
+///////////// start TASK ITEMS & LIST start/////////////////
+//////////////////////////////////////////////////////////*/
+
+const taskForm = document.getElementById("taskform");
+const button = document.querySelector("#taskform > button")
+var taskInput = document.getElementById("taskInput");
+var tasklist = document.querySelector(".task-list")
+var taskFormTitle = document.querySelector("#addTaskModal > div.form-header > h3");
+
+var taskNameInput = document.getElementById("taskNameInput");
+var descriptionInput = document.getElementById("descriptionInput");
+var dueDateInput = document.getElementById("dueDateInput");
+var statusInput = document.getElementById("statusInput");
+var estimatedTimeHrInput = document.getElementById("estimatedTimeHrInput");
+var estimatedTimeMinInput = document.getElementById("estimatedTimeMinInput");
+var priorityInput = document.getElementsByName("priority");
+
+//Function: Task form submit
+taskform.addEventListener("submit", function (event) {
+  event.preventDefault();
+  //validate input values
+  let task = taskInput.value;
+  let description = descriptionInput.value;
+  let dueDate = dueDateInput.value;
+  var categoryInput = document.querySelectorAll('input[id=categoryInput]:checked');
+  let category = Array.from(categoryInput).map(checkbox => checkbox.value);
+  let status = statusInput.value;
+  let estimatedTimeHr = estimatedTimeHrInput.value;
+  let estimatedTimeMin = estimatedTimeMinInput.value;
+  let priority;
+  for (let i = 0; i < priorityInput.length; i++) {
+    if (priorityInput[i].checked)
+      priority = priorityInput[i].value;
+  }
+
+  addTaskModal.classList.remove("active");
+  overlay.classList.remove("active");
+
+  if (task) {
+    addTask(task, description, dueDate, category, status, estimatedTimeHr, estimatedTimeMin, priority);
+  }
+});
+
+//Function: Add task
+function addTask(taskName, description, dueDate, category, status, estimatedTimeHr, estimatedTimeMin, priority) {
+  let task = {
+    id: Date.now(),
+    taskName,
+    description,
+    dueDate,
+    category,
+    status,
+    estimatedTimeHr,
+    estimatedTimeMin,
+    priority,
+  };
+  console.log(taskListArray);
+  taskListArray.push(task);
+  //Store new tasks in local storage
+  localStorage.setItem("tasks", JSON.stringify(taskListArray));
+  renderTask(task);
+};
+
+//Load the saved tasks
+let taskListArray = JSON.parse(localStorage.getItem("tasks")) || [];
+//Render saved tasks
+taskListArray.forEach(renderTask);
+
+
+//Function: Create new task on page
+function renderTask(task) {
+  // Create HTML elements
+  let item = document.createElement("li");
+  item.classList.add("task");
+  item.setAttribute('data-id', task.id);
+  item.innerHTML = `
+      <div class="header-details">
+        <span class=dateTag>${task.dueDate}</span>
+        <span class="priorityTag">${task.priority}</span>
+      </div>
+      </div>
+      <div class="content-details">
+        <p>${task.taskName}</p>
+        <span class="description-tag">${task.description}</span>
+      </div>
+      <div class="bottom-details">
+        <span>${task.category}</span>
+      </div>`
+
+  tasklist.appendChild(item);
+
+  //Add draggable attribute to cards when task is created
+  item.setAttribute('draggable', "true");
+  item.classList.add('taskCard');
+  item.addEventListener("dragstart", dragStart);
+  item.addEventListener("dragend", dragEnd);
+
+    /*
+       Append cards to columns based on priority 
+      if (task.status === column ul id){
+        dropCol.appendChild(item)????
+      }
+      - if statements for each status?
+    */
+
+  // Extra Task DOM elements
+  let delButtonIcon = document.createElement("i");
+  delButtonIcon.className = "fa-solid fa-trash-can";
+  item.append(delButtonIcon);
+
+  let editButtonIcon = document.createElement("i");
+  editButtonIcon.className = "fa-solid fa-pen-to-square";
+  item.append(editButtonIcon);
+  
+  // Event Listeners for DOM elements
+  delButtonIcon.addEventListener("click", function (event) {
+    event.preventDefault();
+    taskForm.reset(); 
+
+    let id = event.target.parentElement.getAttribute('data-id');
+    let index = taskListArray.findIndex(task => task.id === Number(id));
+    removeItemFromArray(taskListArray, index)
+    item.remove();
+    taskListArray =  taskListArray.filter((e) => e !== item); //Remove saved task  
+    localStorage.setItem("tasks", JSON.stringify(taskListArray)) //Update 
+  });
+
+  editButtonIcon.addEventListener("click", function (event){
+    event.preventDefault();
+
+    let thisTask = task;
+    let id = event.target.parentElement.getAttribute('data-id');
+    let index = taskListArray.findIndex(task => thisTask.id === Number(id));
+    
+    console.log(thisTask);
+
+    addTaskModal.classList.add("active");
+    overlay.classList.add("active");
+
+    taskFormTitle.innerText = "Edit Task";
+
+    /* taskListArray.forEach(function(thisTask){
+      if(thisTask.id == id){
+        task.value = thisTask.taskName;
+        description.value = thisTask.description;
+        dueDate.value = thisTask.dueDate;
+        category.value = thisTask.category;
+        status.value = thisTask.status;
+        estimatedTimeHr.value = thisTask.estimatedTimeHr;
+        estimatedTimeMin.value = thisTask.estimatedTimeMin;
+        priority.value = thisTask.priority;
+
+      }
+    });
+    /* taskListArray.findIndex((task, index) => {
+      taskInput.value = task.taskName;
+      descriptionInput.value = task.description; */
+    })
+  
+
+  // Clear the input form
+  taskForm.reset(); 
+}
+
+// Clear the input form
+taskForm.reset();
+
+function removeItemFromArray(arr, index) {
+  if (index > -1) {
+    arr.splice(index, 1)
+  }
+  return arr;
+}
+//------------- MODAL POP-UP FORMS START -------------//
+const modal = document.getElementsByName(".modal");
+const btns = document.querySelectorAll("[data-target]");
+const close_btns = document.querySelectorAll(".close-modals");
+const overlay = document.getElementById("overlay");
+
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelector(btn.dataset.target).classList.add("active");
+    overlay.classList.add("active");
+  });
+});
+
+close_btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelector(btn.dataset.target).classList.remove("active");
+    overlay.classList.remove("active");
+  });
+});
+//------------- end MODAL POP-UP FORMS end -------------//
+
+/*//////////////////////////////////////////////////////////
+////////////////// start TASK BOARD start //////////////////
+//////////////////////////////////////////////////////////*/
+
+/*-------- start DRAGGABLE TASK CARDS/ITEMS start --------*/
+
+/*
+    🟥 🟥  Task cards wont drop into newly created columns
+*/
+const taskCards = document.querySelectorAll(".taskCard");
+const constantCols = document.querySelectorAll("#task-board-container .dropCol");
+let draggableTask = null;
+
+taskCards.forEach((taskCard) => {
+  taskCard.addEventListener("dragstart", dragStart);
+  taskCard.addEventListener("dragend", dragEnd);
+});
+
+function dragStart() {
+  draggableTask = this;
+  setTimeout(() => {
+    this.style.display = "none";
+  }, 0);
+  console.log("dragStart");
+}
+
+function dragEnd() {
+  draggableTask = null;
+  setTimeout(() => {
+    this.style.display = "block";
+  }, 0);
+  console.log("dragEnd");
+}
+
+constantCols.forEach(dropCol => {
+  dropCol.addEventListener("dragover", dragOver);
+  dropCol.addEventListener("dragenter", dragEnter);
+  dropCol.addEventListener("dragleave", dragLeave);
+  dropCol.addEventListener("drop", dragDrop);
+});
+
+function dragOver(event) {
+  event.preventDefault();
+}
+
+function dragEnter() {
+  this.style.border = "1px solid red";
+  console.log("dragEnter");
+}
+
+function dragLeave() {
+  this.style.border = "none";
+  console.log("dragLeave");
+}
+
+function dragDrop() {
+  this.style.border = "none";
+  this.appendChild(draggableTask);
+  console.log();
+}
+/*-------- end DRAGGABLE TASK CARDS/ITEMS end --------*/
+
+/*-------- start ADD TASK BOARD COLUMN start --------*/
+/*
+    🟥 add value to newly added cols & add this to status menu  
+*/
+
+const container = document.getElementById("task-board-container");
+var colInput = document.getElementById("columnInput");
+var setVal = document.getElementById("templ_status_col");
+const addColButton = document.querySelector("#columnForm > button");
+
+columnForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const newCol = document.createElement('div');
+    newCol.classList.add("statusColumn");
+    let colName = colInput.value;
+    //input user input as column value
+    newCol.setAttribute("value", colName);
+
+    //Adding DOM elements of columns
+    //input user input as tile and id
+    newCol.innerHTML = `
+      <div class="status-title">
+        <h3>${colName}</h3>
+        <button class="btn editCol" style="background:none; color: #404040;"><i class='fa fa-edit'></i>
+        </button>
+      </div>
+      <div id="taskList" class="task-list dropCol">
+
+      </div>
+    </div>
+      `;
+    container.append(newCol);
+
+    //update visibility of modal & overlay form when opened/closed
+    addColumnModal.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+/*-------- end ADD TASK BOARD COLUMN end --------*/

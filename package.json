@@ -1,0 +1,19 @@
+{
+  "name": "studbud-final",
+  "version": "1.0.0",
+  "description": "web application for studying",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristali/studbud-final.git"
+  },
+  "author": "Kristal Solidarios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kristali/studbud-final/issues"
+  },
+  "homepage": "https://github.com/kristali/studbud-final#readme"
+}

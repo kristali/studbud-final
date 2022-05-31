@@ -14,38 +14,138 @@
         li{
             float: left;
             background-color: white;
-            width: 30%;
-            height: 9vh;
-            padding: 1px 2rem 3rem 1rem;
+            width: 40%;
+            height: 400px;
+            margin-bottom: -300px;
+            padding: 1rem;
             border-radius: 15px;
+            //Add box shadow
+            border: solid 2px black;
+            
         }
     }
 }
 
+
+
+
 .music-tab-container{
-    .music-header::after{
-        font-family: FontAwesome;
-        content: "\f106";
-        margin: 0 50%;
-    }
+   
     iframe{
         margin: 0 10px;
         width: 100%;
     }
+
+    span.openCloseIcon{
+        margin-left: 95%;
+        color: red;
+     }
 }
 
 .music-tab-container.active{
-   height: 400px;
-
-   .music-header::after{
-    font-family: FontAwesome;
-    content:  "\f107";
-    margin: 0 50%;
-    }
+    margin-bottom: 0;
+    
     iframe{
         display: block;
         height: 380px;
     }
+
+}
+
+.timer-container{
+    span.openCloseIcon{
+        margin-left: 95%;
+        color: blue;
+     }
 }
 
 
+.timer-container.active{
+    margin-bottom: 0;
+}
+
+.pomodoro-container{
+    .pomodoro-header{
+        padding: 0 .5rem 1rem;
+        box-shadow: 0 8px 10px -6px grey;
+        border-radius: 15px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        
+        #timer-status{
+            color:#B43A33;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        #timer-display{
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    }
+
+    .pomodoro-controls{
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+
+        i{
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    }
+
+    button{
+        padding: .5rem;
+        background: none;
+        border: none;
+    } 
+}
+
+.pomodoro-settings{
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    margin: 30px auto;
+    text-transform: uppercase;
+
+    button, div, span{
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    #focus{
+        float: left;
+        width: 50%;
+    }
+    #break{
+        float: right;
+        width: 50%;
+    }
+
+    button{
+        font-size: 25px;
+        font-weight: bold;
+        border-radius: 10px;
+        border: none;
+        background-color:rgb(85, 85, 85);
+        width: 20%;
+        color: white;
+    }
+    
+    #focus div, #break div{
+        background-color: rgb(216, 216, 216);
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+} 
+
+  
+
+progress{
+    width: 100%;
+}

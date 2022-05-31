@@ -1,3 +1,4 @@
+
 /*//////////////////////////////////////////////////////////
 ///////////// start TASK ITEMS & LIST start/////////////////
 //////////////////////////////////////////////////////////*/
@@ -163,8 +164,7 @@ function renderTask(task) {
   taskForm.reset(); 
 }
 
-// Clear the input form
-taskForm.reset();
+
 
 function removeItemFromArray(arr, index) {
   if (index > -1) {
@@ -172,26 +172,6 @@ function removeItemFromArray(arr, index) {
   }
   return arr;
 }
-//------------- MODAL POP-UP FORMS START -------------//
-const modal = document.getElementsByName(".modal");
-const btns = document.querySelectorAll("[data-target]");
-const close_btns = document.querySelectorAll(".close-modals");
-const overlay = document.getElementById("overlay");
-
-btns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    document.querySelector(btn.dataset.target).classList.add("active");
-    overlay.classList.add("active");
-  });
-});
-
-close_btns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    document.querySelector(btn.dataset.target).classList.remove("active");
-    overlay.classList.remove("active");
-  });
-});
-//------------- end MODAL POP-UP FORMS end -------------//
 
 /*//////////////////////////////////////////////////////////
 ////////////////// start TASK BOARD start //////////////////
@@ -261,9 +241,8 @@ function dragDrop() {
 */
 
 const container = document.getElementById("task-board-container");
-var colInput = document.getElementById("columnInput");
-var setVal = document.getElementById("templ_status_col");
 const addColButton = document.querySelector("#columnForm > button");
+var colInput = document.getElementById("columnInput");
 
 columnForm.addEventListener("submit", function(event) {
     event.preventDefault();

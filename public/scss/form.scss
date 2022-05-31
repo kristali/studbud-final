@@ -197,3 +197,28 @@
         margin: 10rem;
     }
 }
+
+
+#addGroupModal.modal{
+    z-index: 2;
+    height:30vh;
+
+    label {
+        font-size: 16px;
+        display: block;
+        font-weight: bold;
+        width: 100%;
+        color: #B43A33;
+    }
+
+    input{
+        background-color: #E5E5E5;
+        border-radius: 10px;
+        border: none;
+        padding: 1rem 4rem;
+    }
+
+    #addColumn .btn{
+        margin: 10rem;
+    }
+}

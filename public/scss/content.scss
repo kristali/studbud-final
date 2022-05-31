@@ -1,0 +1,54 @@
+#content-container{
+    background-color: red;
+    height:70vh;
+    width: 90vw;
+    padding: 1rem;
+    overflow: hidden;
+    overflow-y: auto;
+    margin: 0 auto;
+
+    .content-group-row{
+        background-color: green;
+        margin: 20px 0;
+        height: 40vh;
+        border-radius: 20px;
+
+        .group-title{
+            display: flex;
+            background-color: aqua;
+            border-radius: 20px;
+        }
+    }
+}
+
+#contentList{
+    overflow-x: scroll; /*or overflow-x:scroll */
+    display: flex;
+    padding: 1rem;
+    
+    li{
+        display: inline-block;
+        position: relative;
+        align-items: center;
+        height: 100px;
+        min-width: 200px;
+        margin: 10px 20px;
+        list-style: none;
+        border-radius: 5px;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+
+        .link-details{
+            overflow: hidden;
+            border-top: solid 1px grey;
+
+            a{
+                color: red;
+                font-style: italic;
+            }
+        }
+
+    }
+    
+}

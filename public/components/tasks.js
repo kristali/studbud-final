@@ -7,7 +7,7 @@ const taskForm = document.getElementById("taskform");
 const button = document.querySelector("#taskform > button")
 var taskInput = document.getElementById("taskInput");
 var tasklist = document.querySelector(".task-list")
-var taskFormTitle = document.querySelector("#addTaskModal > div.form-header > h3");
+var taskFormTitle = document.querySelector(".form-header h3");
 
 var taskNameInput = document.getElementById("taskNameInput");
 var descriptionInput = document.getElementById("descriptionInput");
@@ -110,10 +110,6 @@ function renderTask(task) {
   delButtonIcon.className = "fa-solid fa-trash-can";
   item.append(delButtonIcon);
 
-  let editButtonIcon = document.createElement("i");
-  editButtonIcon.className = "fa-solid fa-pen-to-square";
-  item.append(editButtonIcon);
-  
   // Event Listeners for DOM elements
   delButtonIcon.addEventListener("click", function (event) {
     event.preventDefault();
@@ -127,44 +123,9 @@ function renderTask(task) {
     localStorage.setItem("tasks", JSON.stringify(taskListArray)) //Update 
   });
 
-  editButtonIcon.addEventListener("click", function (event){
-    event.preventDefault();
-
-    let thisTask = task;
-    let id = event.target.parentElement.getAttribute('data-id');
-    let index = taskListArray.findIndex(task => thisTask.id === Number(id));
-    
-    console.log(thisTask);
-
-    addTaskModal.classList.add("active");
-    overlay.classList.add("active");
-
-    taskFormTitle.innerText = "Edit Task";
-
-    /* taskListArray.forEach(function(thisTask){
-      if(thisTask.id == id){
-        task.value = thisTask.taskName;
-        description.value = thisTask.description;
-        dueDate.value = thisTask.dueDate;
-        category.value = thisTask.category;
-        status.value = thisTask.status;
-        estimatedTimeHr.value = thisTask.estimatedTimeHr;
-        estimatedTimeMin.value = thisTask.estimatedTimeMin;
-        priority.value = thisTask.priority;
-
-      }
-    });
-    /* taskListArray.findIndex((task, index) => {
-      taskInput.value = task.taskName;
-      descriptionInput.value = task.description; */
-    })
-  
-
   // Clear the input form
   taskForm.reset(); 
 }
-
-
 
 function removeItemFromArray(arr, index) {
   if (index > -1) {
@@ -272,3 +233,4 @@ columnForm.addEventListener("submit", function(event) {
     overlay.classList.remove("active");
   });
 /*-------- end ADD TASK BOARD COLUMN end --------*/
+

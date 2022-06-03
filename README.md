@@ -64,6 +64,8 @@ In considering the mobile user experience, the navigation design was asessed and
 
 100-Projects-HTML-CSS-JavaScript/10—Create Todo App (Drag & Drop) at master · Basir-PD/100-Projects-HTML-CSS-JavaScript. (n.d.). GitHub. Retrieved June 3, 2022, from https://github.com/Basir-PD/100-Projects-HTML-CSS-JavaScript
 
+Bayoneto, L. (n.d.). Japanese study chill. Spotify. Retrieved June 3, 2022, from https://open.spotify.com/playlist/4ZL2KFWRkdJ9FTuxNwUHI6
+
 Build A Notes App in HTML CSS & JavaScript. (n.d.). Retrieved June 3, 2022, from https://www.codingnepalweb.com/build-a-notes-app-in-html-css-javascript/
 
 Cloud Translation. (n.d.). Google Cloud. Retrieved June 3, 2022, from https://cloud.google.com/translate

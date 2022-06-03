@@ -43,6 +43,7 @@ Another key iteration was the made to the **functioning** and **visual** of the 
 
 ### Design for Mobile
 In considering the mobile user experience, the navigation design was asessed and iterated to be more user friendly. 
+
 ![Mobile navigation mockup](docs/nav-mockup.png)
 * As seen in the original mockup above, it lacks mobile-friendly interactions with the horizontally oriented navigation as discussed by in _"7 Mobile-Friendly Navigation Best Practices"_ (2020).
   

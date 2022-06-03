@@ -1,0 +1,100 @@
+
+//----- DASHBOARD: MY TASKS LIST -----//
+.taskListContainer{
+  background-color: white;
+
+  .header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    height: 15%;
+    box-shadow: 0 5px 5px -5px;
+  }
+}
+    
+.task-list {
+  grid-area: task-list;
+  margin-top: 15px;
+  height: 100%;
+  padding: .5rem 1rem;;
+  overflow: hidden;
+  overflow-y: scroll;
+
+  li{
+    height: 10vh;
+    margin: 20px;
+    list-style: none;
+    border-radius: 5px;
+    padding: 5px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+}
+
+
+li.task{
+  .header-details{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .bottom-details{
+    display: flex;
+    justify-content: space-between;
+    //padding-bottom: 1rem;
+    border-top: 1px solid #ccc;
+  }
+
+  .priorityTag{
+    font-size: 12px;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    text-transform: uppercase;
+  }
+  .priorityTag.low{
+    background-color: #519F44;}
+  .priorityTag.medium{
+    background-color: #E59700;}
+  .priorityTag.high{
+    background-color: red;}
+
+  .dateTag{
+    font-size: 12px;
+    padding: 2px;
+    background-color: #2C3749;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+
+  .estTime{
+    font-size: 8px;
+    color: rgb(177, 177, 177);
+  }
+
+  p{
+    font-size: 15px;
+    font-weight: bold;
+    color: #2C3749;
+  }
+
+  .description-tag{
+    font-size: 10px;
+    font-style: italic;
+  }
+  i{
+    color: red;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .task-list {grid-area: task-list;
+
+    li{
+      height: 50vh;
+    }
+  }
+}

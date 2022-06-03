@@ -1,7 +1,4 @@
-
-/*//////////////////////////////////////////////////////////
-///////////// start TASK ITEMS & LIST start/////////////////
-//////////////////////////////////////////////////////////*/
+/*//////////////// start TASKS start ////////////////*/
 
 const taskForm = document.getElementById("taskform");
 const button = document.querySelector("#taskform > button")
@@ -77,17 +74,16 @@ function renderTask(task) {
   item.setAttribute('data-id', task.id);
   item.innerHTML = `
       <div class="header-details">
-        <span class=dateTag>${task.dueDate}</span>
-        <span class="priorityTag">${task.priority}</span>
+        <span class="dateTag">${task.dueDate}</span>
+        <p class="estTime">${task.estimatedTimeHr}hr${task.estimatedTimeMin}min</p>
+        <span class="priorityTag ${task.priority}">${task.priority}</span>
       </div>
       </div>
       <div class="content-details">
         <p>${task.taskName}</p>
         <span class="description-tag">${task.description}</span>
       </div>
-      <div class="bottom-details">
-        <span>${task.category}</span>
-      </div>`
+     `
 
   tasklist.appendChild(item);
 
@@ -97,20 +93,24 @@ function renderTask(task) {
   item.addEventListener("dragstart", dragStart);
   item.addEventListener("dragend", dragEnd);
 
-    /*
-       Append cards to columns based on priority 
-      if (task.status === column ul id){
-        dropCol.appendChild(item)????
-      }
-      - if statements for each status?
-    */
-
+  
   // Extra Task DOM elements
+  // Bottom section of task cards
+  let bottomDetails = document.createElement('div');
+  bottomDetails.className = "bottom-details";
+  bottomDetails.innerHTML =`
+    <span>${task.category}</span>`
+  //Append to task card 
+  item.append(bottomDetails);
+
+  //Delete icon
   let delButtonIcon = document.createElement("i");
   delButtonIcon.className = "fa-solid fa-trash-can";
-  item.append(delButtonIcon);
+  //Append to task card 
+  bottomDetails.append(delButtonIcon);
+  
 
-  // Event Listeners for DOM elements
+  // Event Listeners for delete icon
   delButtonIcon.addEventListener("click", function (event) {
     event.preventDefault();
     taskForm.reset(); 
@@ -134,30 +134,29 @@ function removeItemFromArray(arr, index) {
   return arr;
 }
 
-/*//////////////////////////////////////////////////////////
-////////////////// start TASK BOARD start //////////////////
-//////////////////////////////////////////////////////////*/
+/*//////////////// end TASKS end ////////////////*/
+
+
+/*//////////////// start TASK BOARD start ////////////////*/
 
 /*-------- start DRAGGABLE TASK CARDS/ITEMS start --------*/
-
-/*
-    🟥 🟥  Task cards wont drop into newly created columns
-*/
 const taskCards = document.querySelectorAll(".taskCard");
 const constantCols = document.querySelectorAll("#task-board-container .dropCol");
 let draggableTask = null;
 
+//add drag function event listeners to each task
 taskCards.forEach((taskCard) => {
   taskCard.addEventListener("dragstart", dragStart);
   taskCard.addEventListener("dragend", dragEnd);
 });
 
+//drag start 
 function dragStart() {
   draggableTask = this;
   setTimeout(() => {
     this.style.display = "none";
   }, 0);
-  console.log("dragStart");
+  //console.log("dragStart");
 }
 
 function dragEnd() {
@@ -165,9 +164,10 @@ function dragEnd() {
   setTimeout(() => {
     this.style.display = "block";
   }, 0);
-  console.log("dragEnd");
+  //console.log("dragEnd");
 }
 
+//Add event listeners for columns to be dragged/dropped into 
 constantCols.forEach(dropCol => {
   dropCol.addEventListener("dragover", dragOver);
   dropCol.addEventListener("dragenter", dragEnter);
@@ -197,18 +197,15 @@ function dragDrop() {
 /*-------- end DRAGGABLE TASK CARDS/ITEMS end --------*/
 
 /*-------- start ADD TASK BOARD COLUMN start --------*/
-/*
-    🟥 add value to newly added cols & add this to status menu  
-*/
-
 const container = document.getElementById("task-board-container");
 const addColButton = document.querySelector("#columnForm > button");
 var colInput = document.getElementById("columnInput");
 
+//Function: column form submit
 columnForm.addEventListener("submit", function(event) {
     event.preventDefault();
     const newCol = document.createElement('div');
-    newCol.classList.add("statusColumn");
+    newCol.classList.add("statusColumn", "glass");
     let colName = colInput.value;
     //input user input as column value
     newCol.setAttribute("value", colName);
@@ -234,3 +231,4 @@ columnForm.addEventListener("submit", function(event) {
   });
 /*-------- end ADD TASK BOARD COLUMN end --------*/
 
+/*//////////////// end TASK BOARD end ////////////////*/

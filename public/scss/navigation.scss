@@ -1,24 +1,118 @@
-nav{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
+ nav{
     background-color: #2C3749;
-    height: 80px;
     width: 100%;
+    display: flex;
+    padding: 0 3rem;
+    justify-content: space-between;
+    align-items: center;
 
-    .nav-item{
-        display: flex;
-        justify-content: space-around;
+    .logo{
+        color: white;
         width: 30%;
-
-        li{
-            list-style: none;
-        }
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
         
-        a{
-            color:#828EA0;
-            text-decoration: none;
-        }
+    .menu-icon{
+        display: none;
     }
 
+    .nav-items{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 45%;
+
+        li{
+            list-style-type: none;
+
+            a{
+                text-decoration: none;
+                color:#828EA0;
+                font-weight: bold;
+            }
+            a:hover,
+            a:active{
+                color: white;
+            }
+        }
+    }
 }
+
+
+@media only screen and (max-width: 787px) {
+    nav{
+        flex-direction: column;
+    
+        .menu-icon{
+            display: block;
+            font-size: 2rem;
+            color: #828EA0;
+        }
+        .menu-icon:active{
+            color: white;
+        }
+
+        .logo{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+        .nav-items{
+            display: none;
+            flex-direction: column;
+            width: 100%;
+    
+            li{
+                padding: 1.2rem;
+
+            }
+        }
+        .nav-items.active{
+            display: flex;
+        }
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    nav{
+        flex-direction: column;
+    
+        .menu-icon{
+            display: block;
+            font-size: 2rem;
+            color: #828EA0;
+        }
+        .menu-icon:active{
+            color: white;
+        }
+
+        .logo{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+        .nav-items{
+            display: none;
+            flex-direction: column;
+            width: 100%;
+    
+            li{
+                padding: 1.2rem;
+
+            }
+        }
+        .nav-items.active{
+            display: flex;
+        }
+    }
+  }
+  
+ 
+

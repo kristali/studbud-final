@@ -1,7 +1,7 @@
 .bottom-tabs-container{
     overflow: hidden;
     position: fixed;
-    bottom: -2%; left: 0;
+    bottom: -1%; left: 0;
     width: 100%;
 
     ul{
@@ -15,9 +15,9 @@
             float: left;
             background-color: white;
             width: 40%;
-            height: 400px;
-            margin-bottom: -300px;
+            height: 425px;
             padding: 1rem;
+            margin-bottom: -300px;
             border-radius: 15px;
             //Add box shadow
             border: solid 2px black;
@@ -27,10 +27,7 @@
 }
 
 
-
-
-.music-tab-container{
-   
+.music-tab-container{    
     iframe{
         margin: 0 10px;
         width: 100%;
@@ -48,6 +45,7 @@
     iframe{
         display: block;
         height: 380px;
+        margin: 0 auto;
     }
 
 }
@@ -144,8 +142,27 @@
 
 } 
 
-  
-
 progress{
     width: 100%;
 }
+
+
+@media screen and(max-width: 768px){
+    .bottom-tabs-container ul li{
+        width: 50%;
+    }
+
+    .music-tab-container.active,
+    .timer-container.active{
+        width: 800%;
+
+        iframe{
+            width: 110%;
+            margin: 0 -5px;
+        }
+    }
+    #time-status{
+        font-size: 15px;
+    }
+}
+

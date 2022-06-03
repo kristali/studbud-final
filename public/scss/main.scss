@@ -1,13 +1,9 @@
-@import 'layout';
 @import 'typography';
 @import 'navigation';
-@import 'task-list';
-@import 'form';
-
+@import 'dashboard';
+@import 'tasks';
+@import 'forms';
 @import 'task-board';
-@import 'music';
 @import 'bottom-tabs';
-
-@import 'task-board';
-@import 'content'
-
+@import 'translator';
+@import 'structure'

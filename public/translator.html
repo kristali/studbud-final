@@ -15,102 +15,117 @@
 </head>
 
 <body>
+  <!--NAV BAR-->
   <nav>
-    <h1>StudBud</h1>
+    <div class="logo">
+      <img src="/img/logo.png" alt="studbud" width="80px">
+      <h4>👋 お帰りなさい!</h4>
+      <!--Change to this icon on smaller screens-->
+      <div class="menu-icon">
+        <i class="fas fa-bars"></i>
+      </div>
     </div>
-    <ul class="nav-item">
-        <li class="bold"><a href="index.html">Dashboard</li>
-        <li class="bold"><a href="task-board.html">Task Board</li>
-        <!-- <li class="bold"><a href="./content.html">Immersion Content</li> -->
-        <li class="bold"><a href="./translator.html">Translator</li>
-      </ul>
+    <ul class="nav-items">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="task-board.html">Task Board</a></li>
+      <li><a href="translator.html">Translator</a></li>
+    </ul>
   </nav>
 
-
-    <div class="container glass">
-        <div class="heading">
-            <h2>Japanese to English Translator</h2>
-        </div>     
-        <section class="translator-container">
-            <div class="box-container glass">
-                <div class="fromJapanese">
-                    <div class="box-header">
-                        <span class="flag-icon flag-icon-jp"></span>
-                        <h3>Japanese</h3>
-                    </div>
-                    <div class="text-area">
-                        <textarea id="fromText" placeholder="Enter text"></textarea>
-                    </div>
-                </div>
-                <span><i class="fa-solid fa-arrow-right"></i></span>
-                <div class="toEnglish">
-                    <div class="box-header">
-                        <span
-                        class="flag-icon flag-icon-gb"></span>
-                        <h3>English</h3>
-                    </div>
-                    <div class="text-area">
-                        <textarea id="toText" placeholder="Enter text"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="btns">
-                <button id="reset" class="uk-button uk-button-primary uk-margin-small-top">Reset</button>
-                <button id="save" type="submit">Save to List</button>
-            </div>
-        </section>
-    </div>
-
-    <div class="wordBank-container glass">
-        <div class="wordBank-header">
-            <h3>Your Saved Translations</h3>
-        </div>
-        <div id="translationList">
-        </div>
-    </div>
-
-    <div class="bottom-tabs-container">
-        <ul>
-          <li class="timer-container">
-            <span id ="showTab" class="openCloseIcon timer"><i class="fa-solid fa-angle-up"></i></span>
-            <div class="pomodoro-container">
-    
-              <div class="pomodoro-header">
-                <h2 id="time-status">Focus</h2>
-              
-                <p id="time-display">25:00</p>
-              
-                <button type="button" id="startTimer">
-                    <i class="fa fa-play" aria-hidden="true"></i>
-                </button>
+  <!--CONTAINER FOR GLASS BG-->
+  <div class="container glass">
+      <div class="heading">
+          <h2>Japanese to English Translator</h2>
+      </div> 
+      <!--TRANSLATOR-->
+      <section class="translator-container">
+          <div class="box-container glass">
+             <!--TRANSLATOR: JAPANESE INPUT-->
+              <div class="fromJapanese">
+                  <div class="box-header">
+                      <span class="flag-icon flag-icon-jp"></span>
+                      <h3>Japanese</h3>
+                  </div>
+                  <div class="text-area">
+                      <textarea id="fromText" placeholder="Enter text"></textarea>
+                  </div>
               </div>
-          
-              <div class="pomodoro-settings">
-                <div id="break">
-                  <p class="time-titles">Break</p>
-                  <button type="button" id="minus-break">-</button>
-                  <span id="breakTime">5 </span><span class="minutes"> mins</span>
-                  <button type="button" id="plus-break">+</button>
-                </div>
-          
-                <div id="focus">
-                    <p class="time-titles">Focus</p>
-                    <button type="button" id="minus-focus">-</button>
-                    <span id="sessionTime">25 </span><span class="minutes"> mins</span>
-                    <button type="button" id="plus-focus">+</button>
-                </div>
+              <span><i class="fa-solid fa-arrow-right"></i></span>
+              <!--TRANSLATOR: ENGLISH OUTPUT-->
+              <div class="toEnglish">
+                  <div class="box-header">
+                      <span
+                      class="flag-icon flag-icon-gb"></span>
+                      <h3>English</h3>
+                  </div>
+                  <div class="text-area">
+                      <textarea id="toText" placeholder="Enter text"></textarea>
+                  </div>
               </div>
-          </li>
-          <li class="music-tab-container">
-              <span id ="showTab" class="openCloseIcon music"><i class="fa-solid fa-angle-up"></i></span>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0cyH0TxFDgCQ2gQbs6shh2?utm_source=generator" width="100%" height="75" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-          </li>
-        </ul>
+          </div>
+          <!--TRANSLATOR: RESET & SAVE BTNS-->
+          <div class="btns">
+              <button id="reset" class="uk-button uk-button-primary uk-margin-small-top">Reset</button>
+              <button id="save" type="submit">Save to List</button>
+          </div>
+      </section>
+  </div>
+  <!--WORDBANK SAVES-->
+  <div class="wordBank-container glass">
+      <div class="wordBank-header">
+          <h3>Your Saved Translations</h3>
       </div>
+      <div id="translationList">
+      </div>
+  </div>
 
-      <script type="module" src="./components/timer.js"></script>
-      <script type="module" src="./components/bottom-tabs.js"></script>
-      <script type="module" src="./components/translator.js"></script>
+  <!--BOTTOM TABS-->
+  <div class="bottom-tabs-container">
+    <ul>
+      <!--BOTTOM TABS: TIMER-->
+      <li class="timer-container">
+        <span id ="showTab" class="openCloseIcon timer"><i class="fa-solid fa-angle-up"></i></span>
+        <div class="pomodoro-container">
+
+          <div class="pomodoro-header">
+            <h2 id="time-status">Focus</h2>
+          
+            <p id="time-display">25:00</p>
+          
+            <button type="button" id="startTimer">
+                <i class="fa fa-play" aria-hidden="true"></i>
+            </button>
+          </div>
+        
+          <div class="pomodoro-settings">
+            <div id="break">
+              <p class="time-titles">Break</p>
+              <button type="button" id="minus-break">-</button>
+              <span id="breakTime">5 </span><span class="minutes"> mins</span>
+              <button type="button" id="plus-break">+</button>
+            </div>
+        
+            <div id="focus">
+              <p class="time-titles">Focus</p>
+              <button type="button" id="minus-focus">-</button>
+              <span id="sessionTime">25 </span><span class="minutes"> mins</span>
+              <button type="button" id="plus-focus">+</button>
+            </div>
+          </div>
+        </li>
+        <!--BOTTOM TABS: MUSIC-->
+        <li class="music-tab-container">
+          <span id ="showTab" class="openCloseIcon music"><i class="fa-solid fa-angle-up"></i></span>
+          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/39LPb0vglo7tca5MItzAZB?utm_source=generator" width="100%" height="72" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        </li>
+      </ul>
+    </div>
+
+  <!--SCRIPT TAGS (wont work through main.js :( )-->
+  <script type="module" src="./components/timer.js"></script>
+  <script type="module" src="./components/bottom-tabs.js"></script>
+  <script type="module" src="./components/translator.js"></script>
+  <script type="module" src="./components/navigation.js"></script>
 </body>
 
 </html>

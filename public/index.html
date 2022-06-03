@@ -15,187 +15,201 @@
 </head>
 
 <body>
+  <!--NAV BAR-->
   <nav>
-    <h1>StudBud</h1>
+    <div class="logo">
+      <img src="/img/logo.png" alt="studbud" width="80px">
+      <h4>👋 お帰りなさい!</h4>
+      <!--Change to this icon on smaller screens-->
+      <div class="menu-icon">
+        <i class="fas fa-bars"></i>
+      </div>
     </div>
-    <ul class="nav-item">
-      <li class="bold"><a href="index.html">Dashboard</li>
-      <li class="bold"><a href="task-board.html">Task Board</li>
-      <!-- <li class="bold"><a href="./content.html">Immersion Content</li> -->
-      <li class="bold"><a href="./translator.html">Translator</li>
+    <ul class="nav-items">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="task-board.html">Task Board</a></li>
+      <li><a href="translator.html">Translator</a></li>
     </ul>
   </nav>
 
+  <!--DASHBOARD GRID CONTAINER-->
   <div class="dashboard-grid-container">
-    <div class="avatar"></div>
-    <div class="goals"></div>
+    <!--GRID: AVATAR-->
+    <div class="avatar">
+      <img class="avatar-img" src="/img/avatar.png" alt="avatar">
+      <img class="avatar-img-mobile" src="/img/avatarMobile.png" alt="avatar for mobile">
+    </div>
+    <!--DASHBOARD: GOALS-->
+    <div class="goalsContainer">
+      <div class="goals-header">
+        <h2>My Learning Goals</h2>
+      </div>
+      <div class="goals-list">
+        <div id="goal" class="goal1">
+          <h4 class="gradient" contenteditable="true">Fully understand a Japanese movie</h4>
+        </div>
+        <div id="goal" class="goal2">
+          <h4 class="gradient" contenteditable="true">Ace Japanese finals exam</h4>
+        </div>
+        <div id="goal" class="goal3">
+          <h4 class="gradient" contenteditable="true">Master hiragana and katakana</h4>
+        </div>
+      </div>
+    </div>
 
-    <!---------- HOME: MY TASKS start ---------->
+    <!--DASHBOARD: TASK LIST-->
     <div class="taskListContainer">
       <div class="header">
         <h2>My Tasks</h2>
         <div id="overlay"></div>
         <button class="btn" data-target="#addTaskModal">&#43; Create New Task</button>
       </div>
+      <div id="taskList" class="task-list"></div>
 
-      <div id="taskList" class="task-list">
-       
+      <!-- TASK LIST: ADD TASK MODAL-->
+      <div class="modal" id="addTaskModal">
+        <div class="form-header">
+          <h3>Create Task</h3>
+          <button class="btn close-modals" data-target="#addTaskModal">&times;</button>
+        </div>
+        <!-- ADD TASK MODAL: FORM -->
+        <div id="task-grid">
+          <form id="taskform">
+            <section class="task-form-container">
+              <!-- FORM: COLUMN 1 -->
+              <div class="formCol1">
+                <!-- Task Name-->
+                <label for="task">Task</label>
+                <input type="text" name="task" id="taskInput" placeholder="What is the task?">
+                <br>
+                <!-- Task Desciption -->
+                <label for="Description">Description</label>
+                <input type="text" name="Description" id="descriptionInput" placeholder="What does the task involve?">
+                <br>
+                <!-- Task Category -->
+                <label for="category">Category</label>
+                <div class="category-container">
+                  <div class="category1">
+                      <label>
+                      <input type="checkbox" class="category" id="categoryInput" value="speaking">
+                      <span>Speaking</span>
+                      </label>
+                  </div>
+                  <div class="category2">
+                      <label>
+                      <input type="checkbox" class="category" id="categoryInput" value="reading">
+                      <span>Reading</span>
+                      </label>
+                  </div>
+                  <div class="category3">
+                      <label>
+                      <input type="checkbox" class="category" id="categoryInput" value="grammar">
+                      <span>Grammar</span>
+                      </label>
+                  </div>
+                  <div class="category4">
+                      <label>
+                      <input type="checkbox" class="category" id="categoryInput" value="vocabulary">
+                      <span>Vocabulary</span>
+                      </label>
+                  </div>
+                  <div class="category5">
+                      <label class="category-label">
+                        <input type="checkbox" class="category" id="categoryInput" value="culture"><span>Culture</span>
+                      </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FORM: COLUMN 2 -->
+              <div class="formCol2">
+                <!-- Date -->
+                <label for="dueDate">Due Date</label>
+                <input type="date" name="dueDate" id="dueDateInput">
+                <br>
+                <!-- Status -->
+                <label for="status">Status</label>
+                <select name="status" id="statusInput" multipe="multiple">
+                <option value="to-do">To Do</option>
+                <option value="in-progress">In-progress</option>
+                <option value="review">Review</option>
+                <option value="completed">Completed</option>
+                </select>
+                <br>
+                <!-- Time to Complete -->
+                <label for="estimatedTime">Time to Complete</label>
+                <input type="number" name="estimatedTime" min="0" max="12" id="estimatedTimeHrInput"><span>HR</span>
+
+                <input type="number" name="estimatedTime" min="0" max="59" id="estimatedTimeMinInput"><span>Min</span>
+                <br>
+                <!-- Priority -->
+                <label for="priority">Task Priority</label>
+                <div class="radio-container">
+                  <label for="priorityInput1">LOW</label>
+                  <input type="radio" name="priority" id="priorityInput1" value="low" checked>
+                  <label for="priorityInput1">MED</label>
+                  <input type="radio" name="priority" id="priorityInput2" value="medium">
+                  <label for="priorityInput1">HIGH</label>
+                  <input type="radio" name="priority" id="priorityInput3" value="high">
+                </div>
+              </div>  
+            </section> <br>
+            <button type="submit" class="btn submit-modals" data-target="#addTaskModal">Save</button>
+          </form>
+        </div>
       </div>
-
-
-      <!-- ADD TASK FORM MODAL-->
-        <div class="modal" id="addTaskModal">
-            <div class="form-header">
-                <h3>Create Task</h3>
-                <button class="btn close-modals" data-target="#addTaskModal">&times;</button>
-            </div>
-
-            <!-- Task form -->
-            <div id="task-grid">
-                <form id="taskform">
-
-                    <section class="task-form-container">
-                    <div>
-                        <!-- Task -->
-                        <label for="task">Task</label>
-                        <input type="text" name="task" id="taskInput" placeholder="What is the task?">
-
-                        <br>
-                        <!-- Task Desciption -->
-                        <label for="Description">Description</label>
-                        <input type="text" name="Description" id="descriptionInput" placeholder="What does the task involve?">
-                        <br>
-                        <!-- Date -->
-                        <label for="dueDate">Due Date</label>
-                        <input type="date" name="dueDate" id="dueDateInput">
-                        <br>
-                        
-
-
-                        <br>
-
-                        <!-- Date -->
-                        <label for="dueDate">Due Date</label>
-                        <input type="date" name="dueDate" id="dueDateInput">
-
-                        <br>
-
-                        <div class="category-container">
-                        <label for="category">Category</label>
-                        <div class="category1">
-                            <label>
-                            <input type="checkbox" class="category" id="categoryInput" value="speaking">
-                            <span>Speaking</span>
-                            </label>
-                        </div>
-                        <div class="category2">
-                            <label>
-                            <input type="checkbox" class="category" id="categoryInput" value="reading">
-                            <span>Reading</span>
-                            </label>
-                        </div>
-                        <div class="category3">
-                            <label>
-                            <input type="checkbox" class="category" id="categoryInput" value="grammar">
-                            <span>Grammar</span>
-                            </label>
-                        </div>
-                        <div class="category4">
-                            <label>
-                            <input type="checkbox" class="category" id="categoryInput" value="vocabulary">
-                            <span>Vocabulary</span>
-                            </label>
-                        </div>
-                        <div class="category5">
-                            <label class="category-label">
-                            <input type="checkbox" class="category" id="categoryInput" value="culture"><span>Culture</span>
-                            </label>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <!-- Status -->
-                        <label for="status">Status</label>
-                        <select name="status" id="statusInput" multipe="multiple">
-                          <option value="to-do">To Do</option>
-                          <option value="in-progress">In-progress</option>
-                          <option value="review">Review</option>
-                          <option value="completed">Completed</option>
-                        </select>
-                        <br>
-                        <!-- Time to Complete -->
-                        <label for="estimatedTime">Time to Complete</label>
-                        <input type="number" name="estimatedTime" min="0" max="12" id="estimatedTimeHrInput"><span>HR</span>
-
-                        <input type="number" name="estimatedTime" min="0" max="59" id="estimatedTimeMinInput"><span>Min</span>
-                        <br>
-
-                        <!-- Priority -->
-                        <div class="radio-container">
-                        <label for="priority">Task Priority</label>
-                        <label for="priorityInput1">LOW</label>
-                        <input type="radio" name="priority" id="priorityInput1" value="low" checked>
-                        <label for="priorityInput1">MED</label>
-                        <input type="radio" name="priority" id="priorityInput2" value="medium">
-                        <label for="priorityInput1">HIGH</label>
-                        <input type="radio" name="priority" id="priorityInput3" value="high">
-                        </div>
-                    </div>
-                    </section>
-                    <br>
-                    <button type="submit" class="btn submit-modals" data-target="#addTaskModal">Save</button>
-                </form>
-            </div>
-        </section>
-    <!---------- HOME: MY TASKS end ---------->
+    </div>
   </div>
+  
+ <!--BOTTOM TABS-->
+ <div class="bottom-tabs-container">
+  <ul>
+    <!--BOTTOM TABS: TIMER-->
+    <li class="timer-container">
+      <span id ="showTab" class="openCloseIcon timer"><i class="fa-solid fa-angle-up"></i></span>
+      <div class="pomodoro-container">
 
-  <div class="bottom-tabs-container">
-    <ul>
-      <li class="timer-container">
-        <span id ="showTab" class="openCloseIcon timer"><i class="fa-solid fa-angle-up"></i></span>
-        <div class="pomodoro-container">
-
-          <div class="pomodoro-header">
-            <h2 id="time-status">Focus</h2>
-          
-            <p id="time-display">25:00</p>
-          
-            <button type="button" id="startTimer">
-                <i class="fa fa-play" aria-hidden="true"></i>
-            </button>
+        <div class="pomodoro-header">
+          <h2 id="time-status">Focus</h2>
+        
+          <p id="time-display">25:00</p>
+        
+          <button type="button" id="startTimer">
+              <i class="fa fa-play" aria-hidden="true"></i>
+          </button>
+        </div>
+      
+        <div class="pomodoro-settings">
+          <div id="break">
+            <p class="time-titles">Break</p>
+            <button type="button" id="minus-break">-</button>
+            <span id="breakTime">5 </span><span class="minutes"> mins</span>
+            <button type="button" id="plus-break">+</button>
           </div>
       
-          <div class="pomodoro-settings">
-            <div id="break">
-              <p class="time-titles">Break</p>
-              <button type="button" id="minus-break">-</button>
-              <span id="breakTime">5 </span><span class="minutes"> mins</span>
-              <button type="button" id="plus-break">+</button>
-            </div>
-      
-            <div id="focus">
-                <p class="time-titles">Focus</p>
-                <button type="button" id="minus-focus">-</button>
-                <span id="sessionTime">25 </span><span class="minutes"> mins</span>
-                <button type="button" id="plus-focus">+</button>
-            </div>
+          <div id="focus">
+            <p class="time-titles">Focus</p>
+            <button type="button" id="minus-focus">-</button>
+            <span id="sessionTime">25 </span><span class="minutes"> mins</span>
+            <button type="button" id="plus-focus">+</button>
           </div>
+        </div>
       </li>
+      <!--BOTTOM TABS: MUSIC-->
       <li class="music-tab-container">
-          <span id ="showTab" class="openCloseIcon music"><i class="fa-solid fa-angle-up"></i></span>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0cyH0TxFDgCQ2gQbs6shh2?utm_source=generator" width="100%" height="75" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+        <span id ="showTab" class="openCloseIcon music"><i class="fa-solid fa-angle-up"></i></span>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/39LPb0vglo7tca5MItzAZB?utm_source=generator" width="100%" height="72" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
       </li>
     </ul>
   </div>
 
-  
+  <!--SCRIPT TAGS (wont work through main.js :( )-->
   <script type="module" src="./components/timer.js"></script>
   <script type="module" src="./components/tasks.js"></script>
   <script type="module" src="./components/modals.js"></script>
   <script type="module" src="./components/bottom-tabs.js"></script>
   <script type="module" src="./components/translator.js"></script>
+  <script type="module" src="./components/navigation.js"></script>
 </body>
 
 </html>

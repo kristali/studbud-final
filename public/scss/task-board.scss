@@ -1,3 +1,17 @@
+
+.task-board-header{
+   display: flex;
+   justify-content: center;
+   padding: 1rem;
+   button{
+       margin: 0 10px;
+       border: 1px solid white;
+   }
+   #addColBtn{
+       background-color: #2C3749;
+   }
+}
+
 #task-board-container{
     display: flex;
     height: 60vh;
@@ -12,26 +26,36 @@
     display: inline-block;
     position: relative;
     background-color:darkgray;
-    min-width: 20vw;
+    min-width: 20%;
+    justify-content: center;
     padding: 5px;
-    margin: 0 30px;
-    border-radius: 30px;
-
+    margin: 0 20px;
+    
     .status-title{
-        background-color: paleturquoise;
-        padding: 10px;
-        border-radius: 30px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin: 0 auto;
+        padding: 0 1rem;
+        background-color: white;
+        border-radius: 30px;
+        box-shadow: 0 2px 2px 0.5px;    
     }
+
+    .status-title.to-do{border-bottom: 5px solid red;}
+    .status-title.in-progress{border-bottom: 5px solid rgb(171, 76, 214);}
+    .status-title.review{border-bottom: 5px solid rgb(50, 166, 83);}
+    .status-title.completed{border-bottom: 5px solid rgb(251, 234, 0);}
+   
     .task-list{
-        height: 50vh;
+        margin-top: 3px;
+        height: 85%;
     }
 
     .task-list li{
         margin: 20px 0;
         height: 10vh;
+        padding-bottom: 20px;
     }
 
     .header-details{
@@ -48,13 +72,33 @@
         font-size: 12px;
         font-weight: bold;
     }
-
 }
 
-.to_do .taskCard{
-    background-color: red;
+
+@media only screen and (max-width: 1100px){
+    .statusColumn{
+        min-width: 30%;
+    }
 }
-.in_progress .taskCard{
-    background-color: blue;
+@media only screen and (max-width: 800px){
+    .statusColumn{
+        min-width: 40%;
+    }
 }
+@media only screen and (max-width: 600px){
+    .statusColumn{
+        min-width: 50%;
+    }
+}
+@media only screen and (max-width: 500px){
+    .statusColumn{
+        min-width: 60%;
+    }
+}
+@media only screen and (max-width: 400px){
+    .statusColumn{
+        min-width: 70%;
+    }
+}
+
 
